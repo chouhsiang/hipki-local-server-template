@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>註冊表單</title>
+  </head>
+  <body>
+    <h1>HiPKI Local Server API 範本</h1>
+    <button onclick="tmpl1()">載入 PKCS1 簽章範本</button>
+    <button onclick="tmpl2()">載入 PKCS7 簽章範本</button>
+    <br /><br />
+    POST
+    <input id="url" value="http://127.0.0.1:61161/" style="width: 500px" />
+    <br /><br />
+    <form
+      id="form"
+      method="post"
+      onsubmit="this.action=document.getElementById('url').value"
+    >
+      Body:<br />
+      <textarea id="body" name="tbsPackage" style="width: 800px"></textarea>
+      <br />
+      <input type="submit" />
+    </form>
+    <script>
+      function tmpl1() {
+        document.getElementById("url").value = "http://127.0.0.1:61161/sign";
+        document.getElementById("body").value =
+          '{"pin":"000000","tbs":"TBS","hashAlgorithm":"SHA256","signatureType":"PKCS1"}';
+      }
+      function tmpl2() {
+        document.getElementById("url").value = "http://127.0.0.1:61161/sign";
+        document.getElementById("body").value =
+          '{"pin":"000000","tbs":"TBS","hashAlgorithm":"SHA256","signatureType":"PKCS7","withCardSN":"true"}';
+      }
+    </script>
+  </body>
+</html>
