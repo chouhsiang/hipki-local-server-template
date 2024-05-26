@@ -9,6 +9,8 @@
     <h1>HiPKI Local Server API 範本</h1>
     <button onclick="tmpl1()">載入 PKCS1 簽章範本</button>
     <button onclick="tmpl2()">載入 PKCS7 簽章範本</button>
+    <button onclick="tmpl3()">載入 PKCS1 解密範本</button>
+    <button onclick="tmpl4()">載入 PKCS7 解密範本</button>
     <br /><br />
     POST
     <input id="url" value="http://127.0.0.1:61161/" style="width: 500px" />
@@ -33,6 +35,16 @@
         document.getElementById("url").value = "http://127.0.0.1:61161/sign";
         document.getElementById("body").value =
           '{"pin":"000000","tbs":"TBS","hashAlgorithm":"SHA256","signatureType":"PKCS7","withCardSN":"true"}';
+      }
+      function tmpl3() {
+        document.getElementById("url").value = "http://127.0.0.1:61161/decrypt";
+        document.getElementById("body").value =
+          '{"pin":"000000","cipher":"CIPHER","cipherType":"PKCS1"}';
+      }
+      function tmpl4() {
+        document.getElementById("url").value = "http://127.0.0.1:61161/decrypt";
+        document.getElementById("body").value =
+          '{"pin":"000000","cipher":"CIPHER","cipherType":"PKCS7"}';
       }
     </script>
   </body>
